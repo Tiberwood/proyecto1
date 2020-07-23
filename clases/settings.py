@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -70,6 +72,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'clases.wsgi.application'
 
+#Custom User
+AUTH_USER_MODEL = 'app.User'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
