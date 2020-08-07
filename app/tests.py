@@ -1,9 +1,28 @@
 from django.test import TestCase
-from django.contrib.auth.models import User, Group
-from .models import Role
+from django.contrib.auth.models import Group
+from app.models import User
+import logging
+
+logger = logging.getLogger(__name__)
 
 # Create your tests here.
 
+class TryTest(TestCase):
+
+    def test_try(self):
+        try:
+            user = User.objects.get(pk=2)
+            self.assertEqual(user.count(), 1)
+            logger.info('get user')
+        except User.DoesNotExist:
+            logger.info('Filter user')
+            user = User.objects.filter(pk=2)
+            logger.error('User Does not exist')
+            self.assertEqual(user.count(), 0)
+        except Exception as error:
+            print('holi')
+
+'''
 class RoleTest(TestCase):
 
     def setUp(self):
@@ -19,6 +38,7 @@ class RoleTest(TestCase):
     def test_count(self):
         roles = Role.objects.all()
         self.assertEqual(roles.count(), 2)
+'''
 
 class UserTest(TestCase):
 
